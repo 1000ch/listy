@@ -6,7 +6,6 @@ var isGlob = require('is-glob');
 module.exports = function (arg, callback) {
 
   callback    = callback || function () {};
-
   var paths   = [];
   var error   = null;
   var string  = '';
@@ -25,16 +24,16 @@ module.exports = function (arg, callback) {
       continue;
     }
     
-    if (fs.existsSync(string)) {
-      var fi = fs.statSync(string);
-  
-      if (fi.isFile()) {
-        paths.push(path.resolve(string));
-      }
-  
-      if (fi.isDirectory()) {
-        Array.prototype.push.apply(paths, fs.readdirSync(string));
-      }
+    if (!fs.existsSync(string)) {
+      continue;
+    }
+
+    var fi = fs.statSync(string);
+
+    if (fi.isFile()) {
+      paths.push(path.resolve(string));
+    } else if (fi.isDirectory()) {
+      Array.prototype.push.apply(paths, fs.readdirSync(string));
     }
   }
   

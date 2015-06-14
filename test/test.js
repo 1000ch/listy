@@ -45,18 +45,7 @@ it('should return paths from file path and folder path', function (callback) {
   });
 });
 
-it('should return paths from glob', function (callback) {
-
-  this.timeout(10000);
-
-  lspath('test/**/*.js', function (error, paths) {
-    assert(!error, error);
-    assert(paths.length === 2);
-    callback();
-  });
-});
-
-it('should return paths from glob', function (callback) {
+it('should return paths from single glob', function (callback) {
 
   this.timeout(10000);
 
@@ -67,7 +56,7 @@ it('should return paths from glob', function (callback) {
   });
 });
 
-it('should return paths from glob', function (callback) {
+it('should return paths from multiple glob', function (callback) {
 
   this.timeout(10000);
 
