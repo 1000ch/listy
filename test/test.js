@@ -1,7 +1,7 @@
 var assert = require('power-assert');
 var lspath = require('../');
 
-it('should out paths from file path', function (callback) {
+it('should return paths from file path', function (callback) {
 
   this.timeout(10000);
 
@@ -12,7 +12,7 @@ it('should out paths from file path', function (callback) {
   });
 });
 
-it('should out paths from file paths', function (callback) {
+it('should return paths from file paths', function (callback) {
 
   this.timeout(10000);
 
@@ -23,7 +23,18 @@ it('should out paths from file paths', function (callback) {
   });
 });
 
-it('should out paths from file path and folder path', function (callback) {
+it('should not return with argument which does not exist', function (callback) {
+
+  this.timeout(10000);
+
+  lspath(['test/foo.js', 'test/fixtures/bar.js'], function (error, paths) {
+    assert(!error, error);
+    assert(paths.length === 0);
+    callback();
+  });
+});
+
+it('should return paths from file path and folder path', function (callback) {
 
   this.timeout(10000);
 
@@ -34,7 +45,7 @@ it('should out paths from file path and folder path', function (callback) {
   });
 });
 
-it('should out paths from glob', function (callback) {
+it('should return paths from glob', function (callback) {
 
   this.timeout(10000);
 
@@ -45,7 +56,7 @@ it('should out paths from glob', function (callback) {
   });
 });
 
-it('should out paths from glob', function (callback) {
+it('should return paths from glob', function (callback) {
 
   this.timeout(10000);
 
@@ -56,7 +67,7 @@ it('should out paths from glob', function (callback) {
   });
 });
 
-it('should out paths from glob', function (callback) {
+it('should return paths from glob', function (callback) {
 
   this.timeout(10000);
 

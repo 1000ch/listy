@@ -25,14 +25,16 @@ module.exports = function (arg, callback) {
       continue;
     }
     
-    var fi = fs.statSync(string);
-
-    if (fi.isFile()) {
-      paths.push(path.resolve(string));
-    }
-
-    if (fi.isDirectory()) {
-      Array.prototype.push.apply(paths, fs.readdirSync(string));
+    if (fs.existsSync(string)) {
+      var fi = fs.statSync(string);
+  
+      if (fi.isFile()) {
+        paths.push(path.resolve(string));
+      }
+  
+      if (fi.isDirectory()) {
+        Array.prototype.push.apply(paths, fs.readdirSync(string));
+      }
     }
   }
   
