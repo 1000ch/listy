@@ -1,0 +1,27 @@
+{
+  "name": "ls-path",
+  "version": "1.0.0",
+  "description": "List paths from any arguments",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1000ch/ls-path.git"
+  },
+  "author": "1000ch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1000ch/ls-path/issues"
+  },
+  "homepage": "https://github.com/1000ch/ls-path#readme",
+  "dependencies": {
+    "glob": "^5.0.10",
+    "is-glob": "^2.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "power-assert": "^0.11.0"
+  }
+}
