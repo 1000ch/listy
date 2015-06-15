@@ -12,6 +12,9 @@ List paths from any arguments
 ```javascript
 var lspath = require('ls-path');
 
+var files = lspath('./**/*.js');
+// JavaScript files
+
 lspath('./**/*.js', function (error, paths) {
   console.log(paths);
   // JavaScript files

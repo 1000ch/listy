@@ -5,7 +5,6 @@ var isGlob = require('is-glob');
 
 module.exports = function (arg, callback) {
 
-  callback    = callback || function () {};
   var paths   = [];
   var error   = null;
   var string  = '';
@@ -18,12 +17,12 @@ module.exports = function (arg, callback) {
       error = new Error('Invalid argument');
       break;
     }
-    
+
     if (isGlob(string)) {
       Array.prototype.push.apply(paths, glob.sync(string));
       continue;
     }
-    
+
     if (!fs.existsSync(string)) {
       continue;
     }
@@ -36,6 +35,10 @@ module.exports = function (arg, callback) {
       Array.prototype.push.apply(paths, fs.readdirSync(string));
     }
   }
-  
-  callback(error, paths);
+
+  if (typeof callback === 'function') {
+    callback(error, paths);
+  } else {
+    return paths;
+  }
 };
