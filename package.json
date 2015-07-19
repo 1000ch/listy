@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/1000ch/ls-path#readme",
   "dependencies": {
-    "glob": "^5.0.10",
+    "glob": "^5.0.14",
     "is-glob": "^2.0.0"
   },
   "devDependencies": {
