@@ -1,26 +1,26 @@
-# ls-path
+# listy
 
-[![Build Status](https://travis-ci.org/1000ch/ls-path.svg?branch=master)](https://travis-ci.org/1000ch/ls-path)
-[![NPM version](https://badge.fury.io/js/ls-path.svg)](http://badge.fury.io/js/ls-path)
-[![Dependency Status](https://david-dm.org/1000ch/ls-path.svg)](https://david-dm.org/1000ch/ls-path)
-[![devDependency Status](https://david-dm.org/1000ch/ls-path/dev-status.svg)](https://david-dm.org/1000ch/ls-path#info=devDependencies)
+[![Build Status](https://travis-ci.org/1000ch/listy.svg?branch=master)](https://travis-ci.org/1000ch/listy)
+[![NPM version](https://badge.fury.io/js/listy.svg)](http://badge.fury.io/js/listy)
+[![Dependency Status](https://david-dm.org/1000ch/listy.svg)](https://david-dm.org/1000ch/listy)
+[![devDependency Status](https://david-dm.org/1000ch/listy/dev-status.svg)](https://david-dm.org/1000ch/listy#info=devDependencies)
 
 List paths from any arguments
 
 ## Usage
 
 ```javascript
-var lspath = require('ls-path');
+var listy = require('listy');
 
-var files = lspath('./**/*.js');
+var files = listy('./**/*.js');
 // JavaScript files
 
-lspath('./**/*.js', function (error, paths) {
+listy('./**/*.js', function (error, paths) {
   console.log(paths);
   // JavaScript files
 });
 
-lspath(['./index.js', '../directory'], function (error, paths) {
+listy(['./index.js', '../directory'], function (error, paths) {
   console.log(paths);
   // resolved path to index.js and files in directory
 });

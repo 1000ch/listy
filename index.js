@@ -3,19 +3,20 @@ var path   = require('path');
 var glob   = require('glob');
 var isGlob = require('is-glob');
 
-module.exports = function (arg, callback) {
+function listy(arg) {
 
   var paths   = [];
-  var error   = null;
+  var errors  = [];
   var string  = '';
-  var strings = Array.isArray(arg) ? arg : [arg];
+  var args = Array.isArray(arg) ? arg : [arg];
 
-  for (var i = 0, l = strings.length;i < l;i++) {
-    string = strings[i];
+  for (var i = 0, l = args.length;i < l;i++) {
+    string = args[i];
 
-    if (typeof string !== 'string') {
-      error = new Error('Invalid argument');
-      break;
+    if (string === null || string === undefined) {
+      continue;
+    } else if (typeof string !== 'string') {
+      string = string.toString();
     }
 
     if (isGlob(string)) {
@@ -36,9 +37,18 @@ module.exports = function (arg, callback) {
     }
   }
 
-  if (typeof callback === 'function') {
-    callback(error, paths);
-  } else {
-    return paths;
-  }
+  return paths;
+}
+
+
+module.exports = function (arg) {
+  return new Promise(function (resolve, reject) {
+    try {
+      resolve(listy(arg));
+    } catch (e) {
+      reject(e);
+    }
+  });
 };
+
+module.exports.sync = listy;

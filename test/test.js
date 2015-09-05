@@ -1,7 +1,7 @@
 var assert = require('power-assert');
-var lspath = require('../');
+var listy  = require('../');
 
-describe('ls-path', function () {
+describe('listy', function () {
 
   it('should return paths from file path', function (callback) {
 
@@ -9,9 +9,8 @@ describe('ls-path', function () {
     var argument = 'test/test.js';
     var expected = 1;
 
-    assert(lspath(argument).length === expected);
-    lspath(argument, function (error, paths) {
-      assert(!error, error);
+    assert(listy.sync(argument).length === expected);
+    listy(argument).then(function (paths) {
       assert(paths.length === expected);
       callback();
     });
@@ -23,9 +22,8 @@ describe('ls-path', function () {
     var argument = ['test/test.js', 'test/fixtures/test.js'];
     var expected = 2;
 
-    assert(lspath(argument).length === expected);
-    lspath(argument, function (error, paths) {
-      assert(!error, error);
+    assert(listy.sync(argument).length === expected);
+    listy(argument).then(function (paths) {
       assert(paths.length === expected);
       callback();
     });
@@ -37,9 +35,8 @@ describe('ls-path', function () {
     var argument = ['test/foo.js', 'test/fixtures/bar.js'];
     var expected = 0;
 
-    assert(lspath(argument).length === expected);
-    lspath(argument, function (error, paths) {
-      assert(!error, error);
+    assert(listy.sync(argument).length === expected);
+    listy(argument).then(function (paths) {
       assert(paths.length === expected);
       callback();
     });
@@ -51,9 +48,8 @@ describe('ls-path', function () {
     var argument = ['test/test.js', 'test/fixtures/'];
     var expected = 3;
 
-    assert(lspath(argument).length === expected);
-    lspath(argument, function (error, paths) {
-      assert(!error, error);
+    assert(listy.sync(argument).length === expected);
+    listy(argument).then(function (paths) {
       assert(paths.length === expected);
       callback();
     });
@@ -65,9 +61,8 @@ describe('ls-path', function () {
     var argument = 'test/**/*.json';
     var expected = 1;
 
-    assert(lspath(argument).length === expected);
-    lspath(argument, function (error, paths) {
-      assert(!error, error);
+    assert(listy.sync(argument).length === expected);
+    listy(argument).then(function (paths) {
       assert(paths.length === expected);
       callback();
     });
@@ -79,9 +74,8 @@ describe('ls-path', function () {
     var argument = ['test/**/*.json', 'test/**/*.js'];
     var expected = 3;
 
-    assert(lspath(argument).length === expected);
-    lspath(argument, function (error, paths) {
-      assert(!error, error);
+    assert(listy.sync(argument).length === expected);
+    listy(argument).then(function (paths) {
       assert(paths.length === expected);
       callback();
     });
