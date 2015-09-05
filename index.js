@@ -1,17 +1,16 @@
-var fs     = require('fs');
-var path   = require('path');
-var glob   = require('glob');
-var isGlob = require('is-glob');
+import fs     from 'fs';
+import path   from 'path';
+import glob   from 'glob';
+import isGlob from 'is-glob';
 
-function listy(arg) {
+function listy(arg, options) {
 
-  var paths   = [];
-  var errors  = [];
-  var string  = '';
-  var args = Array.isArray(arg) ? arg : [arg];
+  let paths   = [];
+  let errors  = [];
+  let string  = '';
+  let args = Array.isArray(arg) ? arg : [arg];
 
-  for (var i = 0, l = args.length;i < l;i++) {
-    string = args[i];
+  for (let string of args) {
 
     if (string === null || string === undefined) {
       continue;
@@ -28,7 +27,7 @@ function listy(arg) {
       continue;
     }
 
-    var fi = fs.statSync(string);
+    let fi = fs.statSync(string);
 
     if (fi.isFile()) {
       paths.push(path.resolve(string));
@@ -40,9 +39,8 @@ function listy(arg) {
   return paths;
 }
 
-
-module.exports = function (arg) {
-  return new Promise(function (resolve, reject) {
+module.exports = function (arg, options) {
+  return new Promise((resolve, reject) => {
     try {
       resolve(listy(arg));
     } catch (e) {

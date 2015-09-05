@@ -1,5 +1,5 @@
 var assert = require('power-assert');
-var listy  = require('../');
+var listy  = require('../dist/');
 
 describe('listy', function () {
 
