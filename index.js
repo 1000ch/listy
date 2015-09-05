@@ -3,7 +3,9 @@ import path   from 'path';
 import glob   from 'glob';
 import isGlob from 'is-glob';
 
-function listy(arg, options) {
+const push = Array.prototype.push;
+
+function listy(arg, options = {}) {
 
   let paths   = [];
   let errors  = [];
@@ -19,7 +21,7 @@ function listy(arg, options) {
     }
 
     if (isGlob(string)) {
-      Array.prototype.push.apply(paths, glob.sync(string));
+      push.apply(paths, glob.sync(string));
       continue;
     }
 
@@ -32,17 +34,25 @@ function listy(arg, options) {
     if (fi.isFile()) {
       paths.push(path.resolve(string));
     } else if (fi.isDirectory()) {
-      Array.prototype.push.apply(paths, fs.readdirSync(string));
+      push.apply(paths, fs.readdirSync(string));
     }
+  }
+
+  if (options.ext) {
+    paths = paths.filter(p => path.extname(p) === options.ext);
+  }
+
+  if (typeof options.filter === 'function') {
+    paths = paths.filter(p => options.filter(p));
   }
 
   return paths;
 }
 
-module.exports = function (arg, options) {
+module.exports = function (arg, options = {}) {
   return new Promise((resolve, reject) => {
     try {
-      resolve(listy(arg));
+      resolve(listy(arg, options));
     } catch (e) {
       reject(e);
     }

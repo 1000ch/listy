@@ -9,16 +9,10 @@ List paths from any arguments
 
 ## Usage
 
-You can list files with following APIs.
-
-- `listy([arguments])` returns promise object.
-- `listy.sync([arguments])` will list files synchronously.
+`listy` lists resolved paths such as following.
 
 ```javascript
 var listy = require('listy');
-
-var files = listy.sync('./**/*.js');
-// JavaScript files
 
 listy('./**/*.js').then(function (paths) {
   console.log(paths);
@@ -29,6 +23,9 @@ listy(['./index.js', '../directory']).then(function (paths) {
   console.log(paths);
   // resolved path to index.js and files in directory
 });
+
+var files = listy.sync('./**/*.js');
+// JavaScript files
 ```
 
 ## Install
@@ -38,6 +35,26 @@ With [npm](https://www.npmjs.com/) do:
 ```bash
 $ npm install listy
 ```
+
+## API
+
+### `listy(arguments[, options])`
+### `listy.sync(arguments[, options])`
+
+`listy()` returns promise object, `listy.sync()` returns file list synchronously.
+
+#### arguments
+
+Type: `String` or `Array<String>`
+
+#### options
+
+Type: `Object` which contains following optional parameters.
+
+- `ext` (Type: `String`)
+- `filter` (Type: `Function`)
+
+They will filter resolved file paths.
 
 ## License
 
