@@ -4,7 +4,7 @@
   "description": "List paths from any arguments",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test/*.js"
+    "test": "mocha --require=intelli-espower-loader ./test/*.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,9 @@
     "is-glob": "^2.0.0"
   },
   "devDependencies": {
-    "mocha": "^2.2.5",
-    "power-assert": "^0.11.0"
+    "espower-loader": "^1.0.0",
+    "intelli-espower-loader": "^1.0.0",
+    "mocha": "^2.3.0",
+    "power-assert": "^1.0.0"
   }
 }
