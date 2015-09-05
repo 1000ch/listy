@@ -1,6 +1,6 @@
 {
   "name": "listy",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "List paths from any arguments",
   "main": "dist/index.js",
   "scripts": {
