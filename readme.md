@@ -5,11 +5,9 @@
 [![Dependency Status](https://david-dm.org/1000ch/listy.svg)](https://david-dm.org/1000ch/listy)
 [![devDependency Status](https://david-dm.org/1000ch/listy/dev-status.svg)](https://david-dm.org/1000ch/listy#info=devDependencies)
 
-List paths from any arguments
+List resolved paths from any arguments.
 
 ## Usage
-
-`listy` lists resolved paths such as following.
 
 ```javascript
 var listy = require('listy');
@@ -39,6 +37,7 @@ $ npm install listy
 ## API
 
 ### `listy(arguments[, options])`
+
 ### `listy.sync(arguments[, options])`
 
 `listy()` returns promise object, `listy.sync()` returns file list synchronously.
