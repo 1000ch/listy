@@ -4,7 +4,7 @@
   "description": "List paths from any arguments",
   "main": "dist/index.js",
   "scripts": {
-    "postinstall": "babel index.js --out-dir dist",
+    "postinstall": "babel index.js | uglifyjs -o dist/index.js",
     "test": "mocha --require=intelli-espower-loader ./test/*.js"
   },
   "repository": {
@@ -20,7 +20,8 @@
   "dependencies": {
     "babel": "^5.8.23",
     "glob": "^5.0.14",
-    "is-glob": "^2.0.0"
+    "is-glob": "^2.0.0",
+    "uglify-js": "^2.4.24"
   },
   "devDependencies": {
     "espower-loader": "^1.0.0",
