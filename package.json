@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/1000ch/listy#readme",
   "dependencies": {
-    "glob": "^5.0.14",
-    "is-glob": "^2.0.0"
+    "glob": "^5.0.15",
+    "is-glob": "^2.0.1"
   },
   "devDependencies": {
     "babel": "^5.8.23",
