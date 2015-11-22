@@ -3,7 +3,7 @@ import path   from 'path';
 import glob   from 'glob';
 import isGlob from 'is-glob';
 
-const normalize = (value) => {
+const normalize = value => {
 
   if (value == null) {
     return [];
@@ -21,12 +21,11 @@ const listy = (arg, options = {}) => {
 
   let paths   = [];
   let strings = normalize(arg);
-  const push = Array.prototype.push;
 
   for (let string of strings) {
 
     if (isGlob(string)) {
-      push.apply(paths, glob.sync(string));
+      glob.sync(string).forEach(p => paths.push(p));
       continue;
     }
 
@@ -39,7 +38,7 @@ const listy = (arg, options = {}) => {
     if (fi.isFile()) {
       paths.push(path.resolve(string));
     } else if (fi.isDirectory()) {
-      push.apply(paths, fs.readdirSync(string));
+      fs.readdirSync(string).forEach(p => paths.push(p));
     }
   }
 
