@@ -1,10 +1,11 @@
-import fs     from 'fs';
-import path   from 'path';
-import glob   from 'glob';
-import isGlob from 'is-glob';
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
+const isGlob = require('is-glob');
 
 const normalize = value => {
-
   if (value == null) {
     return [];
   }
@@ -17,13 +18,12 @@ const normalize = value => {
   return array.filter(compaction).map(stringify);
 };
 
-const listy = (arg, options = {}) => {
-
+module.exports = (arg, options) => {
   let paths   = [];
   let strings = normalize(arg);
+  options = options || {};
 
   for (let string of strings) {
-
     if (isGlob(string)) {
       glob.sync(string).forEach(p => paths.push(p));
       continue;
@@ -52,7 +52,3 @@ const listy = (arg, options = {}) => {
 
   return paths;
 };
-
-module.exports = (arg, options) => Promise.resolve(listy(arg, options));
-
-module.exports.sync = listy;

@@ -1,117 +1,80 @@
-var assert = require('power-assert');
-var listy  = require('../dist/');
+'use strict';
 
-describe('listy', function () {
+const test = require('tape');
+const listy = require('..');
 
-  it('should return paths from file path', function (callback) {
+test('should return paths from file path', t => {
+  t.plan(1);
 
-    this.timeout(1000);
-    var argument = 'test/test.js';
-    var expected = 1;
+  let argument = 'test/test.js';
+  let expected = 1;
 
-    assert(listy.sync(argument).length === expected);
-    listy(argument).then(function (paths) {
-      assert(paths.length === expected);
-      callback();
-    });
-  });
+  t.equal(listy(argument).length, expected);
+});
 
-  it('should return paths from file paths', function (callback) {
+test('should return paths from file paths', t => {
+  t.plan(1);
 
-    this.timeout(1000);
-    var argument = ['test/test.js', 'test/fixtures/fixture.js'];
-    var expected = 2;
+  let argument = ['test/test.js', 'test/fixtures/fixture.js'];
+  let expected = 2;
 
-    assert(listy.sync(argument).length === expected);
-    listy(argument).then(function (paths) {
-      assert(paths.length === expected);
-      callback();
-    });
-  });
+  t.equal(listy(argument).length, expected);
+});
 
-  it('should not return with argument which does not exist', function (callback) {
+test('should not return with argument which does not exist', t => {
+  t.plan(1);
 
-    this.timeout(1000);
-    var argument = ['test/foo.js', 'test/fixtures/bar.js'];
-    var expected = 0;
+  let argument = ['test/foo.js', 'test/fixtures/bar.js'];
+  let expected = 0;
 
-    assert(listy.sync(argument).length === expected);
-    listy(argument).then(function (paths) {
-      assert(paths.length === expected);
-      callback();
-    });
-  });
+  t.equal(listy(argument).length, expected);
+});
 
-  it('should return paths from file path and folder path', function (callback) {
+test('should return paths from file path and folder path', t => {
+  t.plan(1);
 
-    this.timeout(1000);
-    var argument = ['test/test.js', 'test/fixtures/'];
-    var expected = 3;
+  let argument = ['test/test.js', 'test/fixtures/'];
+  let expected = 3;
 
-    assert(listy.sync(argument).length === expected);
-    listy(argument).then(function (paths) {
-      assert(paths.length === expected);
-      callback();
-    });
-  });
+  t.equal(listy(argument).length, expected);
+});
 
-  it('should return paths from single glob', function (callback) {
+test('should return paths from single glob', t => {
+  t.plan(1);
 
-    this.timeout(1000);
-    var argument = 'test/**/*.json';
-    var expected = 1;
+  let argument = 'test/**/*.json';
+  let expected = 1;
 
-    assert(listy.sync(argument).length === expected);
-    listy(argument).then(function (paths) {
-      assert(paths.length === expected);
-      callback();
-    });
-  });
+  t.equal(listy(argument).length, expected);
+});
 
-  it('should return paths from multiple glob', function (callback) {
+test('should return paths from multiple glob', t => {
+  t.plan(1);
 
-    this.timeout(1000);
-    var argument = ['test/**/*.json', 'test/**/*.js'];
-    var expected = 3;
+  let argument = ['test/**/*.json', 'test/**/*.js'];
+  let expected = 3;
 
-    assert(listy.sync(argument).length === expected);
-    listy(argument).then(function (paths) {
-      assert(paths.length === expected);
-      callback();
-    });
-  });
+  t.equal(listy(argument).length, expected);
+});
 
-  it('should filter paths with extension', function (callback) {
+test('should filter paths with extension', t => {
+  t.plan(1);
 
-    this.timeout(1000);
-    var argument = ['test/**/*.json', 'test/**/*.js'];
-    var expected = 2;
-    var options  = {
-      ext: '.js'
-    };
+  let argument = ['test/**/*.json', 'test/**/*.js'];
+  let expected = 2;
 
-    assert(listy.sync(argument, options).length === expected);
-    listy(argument, options).then(function (paths) {
-      assert(paths.length === expected);
-      callback();
-    });
-  });
+  t.equal(listy(argument, {
+    ext: '.js'
+  }).length, expected);
+});
 
-  it('should filter paths with function', function (callback) {
+test('should filter paths with function', t => {
+  t.plan(1);
 
-    this.timeout(1000);
-    var argument = ['test/**/*.json', 'test/**/*.js'];
-    var expected = 1;
-    var options  = {
-      filter: function(p) {
-        return p.indexOf('.json') !== -1;
-      }
-    };
+  let argument = ['test/**/*.json', 'test/**/*.js'];
+  let expected = 1;
 
-    assert(listy.sync(argument, options).length === expected);
-    listy(argument, options).then(function (paths) {
-      assert(paths.length === expected);
-      callback();
-    });
-  });
+  t.equal(listy(argument, {
+    filter: p => p.indexOf('.json') !== -1
+  }).length, expected);
 });
