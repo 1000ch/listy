@@ -10,19 +10,8 @@ List resolved paths from any arguments.
 ## Usage
 
 ```javascript
-var listy = require('listy');
-
-listy('./**/*.js').then(function (paths) {
-  console.log(paths);
-  // JavaScript files
-});
-
-listy(['./index.js', '../directory']).then(function (paths) {
-  console.log(paths);
-  // resolved path to index.js and files in directory
-});
-
-var files = listy.sync('./**/*.js');
+const listy = require('listy');
+const files = listy('./**/*.js');
 // JavaScript files
 ```
 
@@ -37,10 +26,6 @@ $ npm install listy
 ## API
 
 ### `listy(arguments[, options])`
-
-### `listy.sync(arguments[, options])`
-
-`listy()` returns promise object, `listy.sync()` returns file list synchronously.
 
 #### arguments
 
