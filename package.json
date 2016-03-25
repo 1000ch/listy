@@ -16,10 +16,10 @@
   },
   "homepage": "https://github.com/1000ch/listy#readme",
   "dependencies": {
-    "glob": "^6.0.1",
+    "glob": "^7.0.3",
     "is-glob": "^2.0.1"
   },
   "devDependencies": {
-    "tape": "^4.4.0"
+    "tape": "^4.5.1"
   }
 }
