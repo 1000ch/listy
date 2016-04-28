@@ -6,20 +6,20 @@ const glob = require('glob');
 const isGlob = require('is-glob');
 
 const normalize = value => {
-  if (value == null) {
+  if (!value) {
     return [];
   }
 
   let array = Array.isArray(value) ? value : [value];
 
-  const compaction = item => item != null;
-  const stringify  = item => item.toString();
+  const compaction = item => item !== null || item !== undefined;
+  const stringify = item => item.toString();
 
   return array.filter(compaction).map(stringify);
 };
 
 module.exports = (arg, options) => {
-  let paths   = [];
+  let paths = [];
   let strings = normalize(arg);
   options = options || {};
 

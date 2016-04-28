@@ -64,7 +64,7 @@ test('should filter paths with extension', t => {
   let expected = 2;
 
   t.equal(listy(argument, {
-    ext: '.js'
+    ext : '.js'
   }).length, expected);
 });
 
@@ -75,6 +75,6 @@ test('should filter paths with function', t => {
   let expected = 1;
 
   t.equal(listy(argument, {
-    filter: p => p.indexOf('.json') !== -1
+    filter : p => p.indexOf('.json') !== -1
   }).length, expected);
 });
