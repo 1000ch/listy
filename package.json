@@ -17,8 +17,8 @@
     "is-glob": "^2.0.1"
   },
   "devDependencies": {
-    "@1000ch/eslint-config": "^1.0.0",
-    "eslint": "^2.8.0",
+    "@1000ch/eslint-config": "^1.2.0",
+    "eslint": "^2.13.0",
     "faucet": "0.0.1",
     "tape": "^4.5.1"
   },
