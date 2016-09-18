@@ -14,7 +14,7 @@
   "homepage": "https://github.com/1000ch/listy#readme",
   "dependencies": {
     "glob": "^7.0.3",
-    "is-glob": "^2.0.1"
+    "is-glob": "^3.0.0"
   },
   "devDependencies": {
     "@1000ch/eslint-config": "^2.2.2",
