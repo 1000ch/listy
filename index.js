@@ -10,7 +10,12 @@ const normalize = value => {
     return [];
   }
 
-  let array = Array.isArray(value) ? value : [value];
+  let array;
+  if (Array.isArray(value)) {
+    array = value;
+  } else {
+    array = [value];
+  }
 
   const compaction = item => item !== null || item !== undefined;
   const stringify = item => item.toString();
