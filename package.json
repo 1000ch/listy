@@ -13,14 +13,14 @@
   },
   "homepage": "https://github.com/1000ch/listy#readme",
   "dependencies": {
-    "glob": "^7.0.3",
+    "glob": "^7.1.0",
     "is-glob": "^3.0.0"
   },
   "devDependencies": {
     "@1000ch/eslint-config": "^2.2.2",
-    "eslint": "^3.5.0",
+    "eslint": "^3.6.1",
     "faucet": "0.0.1",
-    "tape": "^4.5.1"
+    "tape": "^4.6.0"
   },
   "eslintConfig": {
     "extends": "@1000ch"
